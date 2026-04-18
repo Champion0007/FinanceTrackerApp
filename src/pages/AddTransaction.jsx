@@ -2,8 +2,10 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import { GoArrowDownLeft } from "react-icons/go";
 import { GoArrowUpRight } from "react-icons/go";
+import { useNavigate } from "react-router-dom";
 
 const AddTransaction = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = React.useState({
     type: "expense",
     amount: "",
@@ -38,6 +40,8 @@ const AddTransaction = () => {
     localStorage.setItem("transactions", JSON.stringify(updated));
 
     // console.log("transaction saved", updated);
+
+    navigate("/dashboard");
 
     setFormData({
       type: "expense",
